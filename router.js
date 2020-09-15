@@ -16,7 +16,7 @@ async function loadPage(page) {
     urlParams.set("page", page);
     history.replaceState(null, page, url + decodeURIComponent(urlParams));
 
-    if(document.querySelector(`script[src="./pages/${page}.js"]`)) {
+    if(document.querySelector(`script[src="./${page}.js"]`)) {
         // Script is already loaded, no need to append it twice
         console.log("loaded");
         loadContent(page);
@@ -26,7 +26,7 @@ async function loadPage(page) {
     // Getting page as script (which is allowed to be imported even from file storage)
     let script  = document.createElement("script");
     script.type = "text/javascript";
-    script.src = `./pages/${page}.js`;
+    script.src = `./${page}.js`;
 
     // Appending script to body
     document.body.appendChild(script);
