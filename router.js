@@ -45,5 +45,12 @@ async function loadPage(page) {
 }
 
 function loadContent(page) {
-    document.getElementById("content").innerHTML = eval(page);
+        try{
+        document.getElementById("content").innerHTML = eval(page);
+    } catch(err) {
+        // Content is not defined
+        document.getElementById("content").innerHTML = e404;
+        // Removing content element
+        document.body.removeChild(document.querySelector(`script[src="./pages/${page}.js"`));
+    }
 }
