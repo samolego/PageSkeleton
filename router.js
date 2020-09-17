@@ -55,6 +55,7 @@ function loadContent(page) {
     } catch(err) {
         // Content is not defined
         document.getElementById("content").innerHTML = e404;
+        init_e404();
         // Removing content element
         document.body.removeChild(document.querySelector(`script[src="./pages/${page}.js"`));
     }
