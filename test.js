@@ -4,7 +4,7 @@ const test = `
 
 `;
 
-async function init() {
+async function init_test() {
     // test js code
     console.log("test init");
 }
