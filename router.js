@@ -7,11 +7,16 @@ if(!page) {
 }
 
 // Call loadPage("page_name") to change content
-window.onload = loadPage(page);
+window.onload = loadPage(page, true);
 
 
 
-async function loadPage(page) {
+async function loadPage(page, forceReload) {
+    // Checking whether page should be force-reloaded
+    if(!forceReload && urlParams.get("page") == page) {
+        init();
+        return;
+    }
     // Setting URL params
     urlParams.set("page", page);
     history.replaceState(null, page, url + decodeURIComponent(urlParams));
@@ -48,6 +53,7 @@ async function loadPage(page) {
 function loadContent(page) {
         try{
             document.getElementById("content").innerHTML = eval(page);
+            eval(`init_${page}()`);
     } catch(err) {
         // Content is not defined
         document.getElementById("content").innerHTML = e404;
