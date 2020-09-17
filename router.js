@@ -41,12 +41,13 @@ async function loadPage(page) {
     // Lambda is required!
     script.onload = () => {
         loadContent(page);
+        init();
     }
 }
 
 function loadContent(page) {
         try{
-        document.getElementById("content").innerHTML = eval(page);
+            document.getElementById("content").innerHTML = eval(page);
     } catch(err) {
         // Content is not defined
         document.getElementById("content").innerHTML = e404;
