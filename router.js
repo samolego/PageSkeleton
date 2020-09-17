@@ -14,7 +14,6 @@ window.onload = loadPage(page, true);
 async function loadPage(page, forceReload) {
     // Checking whether page should be force-reloaded
     if(!forceReload && urlParams.get("page") == page) {
-        init();
         return;
     }
     // Setting URL params
@@ -46,7 +45,6 @@ async function loadPage(page, forceReload) {
     // Lambda is required!
     script.onload = () => {
         loadContent(page);
-        init();
     }
 }
 
